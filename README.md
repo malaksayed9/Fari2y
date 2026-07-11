@@ -161,7 +161,6 @@ fari2y/
 - Expand track taxonomy beyond 4 classes (e.g. DevOps, QA, UI/UX design).
 - Replace hand-tuned keyword boosting with a learned calibration layer.
 - Automate model retraining as new course project data arrives.
-- Add drill-through in Power BI from Course Project → Task-level track predictions.
 
 ---
 
