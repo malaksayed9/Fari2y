@@ -1,0 +1,193 @@
+﻿Id,Name,Description,TaskWeight
+1,Design database schema,"Create the relational schema for users, vendors, admins, products, images, permissions, product views, orders, bookmarks, and purchase history.",7
+2,Implement real-time socket communication,"Set up a SignalR hub (or equivalent) on the .Net Core backend and a JavaScript client to broadcast events such as product approval, purchase notifications, and permission changes.",6
+3,user registration,Provide a frontend form for vendors to submit registration data and a backend endpoint that stores the pending vendor account.,5
+4,Admin approve vendor registration,Create a backend operation and admin UI to change a pending vendor account status to approved.,4
+5,Admin reject vendor registration,Create a backend operation and admin UI to change a pending vendor account status to rejected.,4
+6,user login,"Implement a login page for Admin, Vendor, and Customer and a backend authentication service that issues JWT tokens.",5
+7,user logout,Provide a logout mechanism that clears the authentication token on the client and invalidates it on the server if needed.,3
+8,Enable vendor permission,Backend service and admin UI to turn on a specific permission (feature) for a vendor role or an individual vendor.,4
+9,Disable vendor permission,Backend service and admin UI to turn off a specific permission (feature) for a vendor role or an individual vendor.,4
+10,Vendor create product post,"Frontend form for vendors to enter product details (title, description, price, images, units, etc.) and backend endpoint to store the new product as pending.",6
+11,Vendor list/manage own products,Display a vendor’s products with pagination and provide UI controls for edit/delete; backend returns the vendor’s product list.,4
+12,Vendor update product details,Backend endpoint and frontend form to modify any mutable fields of an existing product.,5
+13,Vendor delete product,Backend operation and UI button that removes a product record permanently.,4
+14,Vendor update product inventory,Backend service and UI control to change the Number of available units for a product.,4
+15,Admin accept product post,Backend operation and admin UI to mark a vendor-submitted product as approved so it becomes visible to customers.,4
+16,Admin reject product post,"Backend operation and admin UI to mark a vendor-submitted product as rejected, preventing it from being shown.",4
+17,Admin enable auto-approval for vendor,Backend setting and admin UI that automatically approves all future product posts from a selected vendor.,3
+18,Customer view all posted products,Frontend page that fetches and displays every approved product; backend endpoint returns the product list.,3
+19,Customer search products,Implement search UI with filters for category and price range and a backend query that returns matching products.,4
+20,Record product view count,Backend increment of the Number of viewers each time a customer opens a product detail page; frontend triggers the increment.,3
+21,Customer purchase product,"Frontend checkout flow and backend order processing that validates stock, decrements inventory, creates an order record, and prevents purchase when units are zero.",7
+22,Customer save (bookmark) product post,Frontend button to mark a product as saved and backend endpoint to store the bookmark for the customer.,3
+23,Vendor view purchase history for a product,Backend query and frontend table that shows all customers who bought a specific product and their purchase details.,5
+24,Overdue Notifications,"Write a PL/SQL procedure that identifies students with overdue books and logs notification details into the NotificationLogs table. Check for books overdue more than 7 days and include student ID, book ID, overdue days, and notification date.",3
+25,Dynamic Late Fee Calculation,"Write a PL/SQL function that calculates late fees based on overdue days and book type. Takes borrow_record_id as input, calculates fee ($1/day for regular books, $2/day for reference books), saves to Penalties table, and returns the fee.",4
+26,Borrowing Validation Trigger,"Create a PL/SQL trigger that prevents a student from borrowing a book if they have overdue books or reached the borrowing limit (e.g., 3 books). Raises an exception to prevent invalid borrowing.",4
+27,Audit Trail for Borrowing Records,"Create BEFORE UPDATE and BEFORE DELETE triggers to log modifications or deletions of borrowing records into AuditTrail table. Capture table name, operation type, old data, new data, and timestamp.",3
+28,Borrowing History Report,"Write a PL/SQL cursor that retrieves a student’s borrowing history including overdue books and penalties. Input: student_id. Output: book title, borrow date, return date, status, and associated penalties.",3
+29,Safe Return Process with Transactions,"Write a PL/SQL block to handle returning multiple books in one transaction. Check for overdue penalties, ROLLBACK on errors, update BorrowingRecords and Penalties tables if successful.",5
+30,Books Availability Report,"Write a PL/SQL block to generate a detailed report of book availability. Include current status (available, borrowed, overdue), borrower info if borrowed, overdue days, and display in readable format using DBMS_OUTPUT.",3
+31,Automated Suspension,"Create a PL/SQL procedure to automatically suspend students whose unpaid penalties exceed a threshold (e.g., $50). Updates membership_status to 'suspended' in Students table.",4
+32,User Management and Privileges,Create a Manager user to grant two users roles. User 1 creates Books and BookTypes tables. User 2 inserts 5 rows of book details and types into tables.,2
+33,Blocker-Waiting Situation,"Demonstrate a blocker-waiting scenario with two transactions. User 1 locks BorrowingRecords while updating, User 2 tries to insert penalty for the same record. Display how the session waits.",4
+34,Identifying Blocker and Waiting Sessions,Identify sessions in blocker-waiting scenario using SID and SERIAL# for blocker and waiting sessions. Display session details and explain resolution.,3
+35,Deadlock Demonstration,"Demonstrate deadlock scenario: User 1 updates Books while trying to lock BorrowingRecords, User 2 updates BorrowingRecords while trying to lock Books. Show handling using rollback mechanisms.",5
+36,Build positional index using MapReduce,Implement a MapReduce job in Java that reads the dataset and constructs a positional inverted index with term positions within each document.,7
+37,Display positional index,"Format and display each term with its document IDs and positions in the required structure <term doc1: pos1, pos2; doc2: pos1, pos2; ...>.",3
+38,Compute term frequency (TF),Calculate the frequency of each term in each document using the positional index output and display TF values.,4
+39,Compute inverse document frequency (IDF),Compute IDF for each term based on the number of documents containing the term and display results.,4
+40,Compute TF-IDF matrix,Compute TF-IDF values for each term-document pair and display the resulting matrix.,5
+41,Implement phrase query with Boolean operators,Build a query system that supports phrase queries with AND and AND NOT operators using the positional index.,6
+42,Compute similarity between query and documents,Compute cosine similarity between query and matched documents using TF-IDF vectors.,5
+43,Rank documents,Sort documents based on similarity scores in descending order.,3
+44,Return relevant documents,Return ranked list of relevant documents as final output.,3
+45,Implement User Service backend with REST API,"Design and implement a User microservice exposing RESTful endpoints for user registration, authentication, and profile management, ensuring proper validation and data persistence.",7
+46,Implement Order Service backend with REST API,"Develop an Order microservice with REST APIs to handle order creation, updates, and tracking, including validation of user and product data.",7
+47,Implement Product Service backend with REST API,"Build a Product microservice providing RESTful APIs for managing product catalog, including CRUD operations and inventory handling.",7
+48,Containerize microservices using Docker,"Create Dockerfiles for each microservice defining runtime environment, dependencies, and startup commands to ensure consistent deployment.",5
+49,Create docker-compose orchestration,"Configure docker-compose to orchestrate all services including microservices, Kafka broker, and databases within a unified network.",6
+50,Implement Kafka event producer,Develop Kafka producers within microservices to publish domain events such as UserRegistered and OrderPlaced to appropriate Kafka topics.,8
+51,Implement Kafka event consumer,"Implement Kafka consumers to subscribe to topics and process incoming events asynchronously, enabling inter-service communication and data consistency.",8
+52,Define JSON schemas for events,Design and document structured JSON schemas for event payloads to ensure consistency and validation across all Kafka messages.,4
+53,Build React frontend for API interaction,"Develop a React-based frontend application to interact with backend APIs, enabling users to manage products, orders, and user accounts through a user-friendly interface.",7
+54,Design and implement Ethereum voting smart contract,"Write a Solidity contract that records votes, enforces one-vote-per-voter, tallies results, and guarantees immutability on the Ethereum blockchain.",8
+55,Develop frontend UI for casting votes,Create React components that let authenticated users select a candidate and submit their vote securely.,6
+56,Implement user registration endpoint,"Build a Node.js API that registers new users, hashes passwords, and stores user records.",5
+57,Implement user login endpoint,"Create a Node.js API that authenticates users, verifies credentials, and issues JWT/session tokens.",5
+58,Implement user logout endpoint,Provide a Node.js API that invalidates user tokens or clears server-side sessions.,4
+59,Backend service for blockchain interaction,"Implement Node.js functions that connect to the Ethereum network, deploy/interact with the voting smart contract, and submit vote transactions.",7
+60,Integrate frontend vote submission with backend blockchain service,"Connect the React vote UI to the Node.js API, send selected candidate data, handle blockchain response, and display confirmation to the user.",6
+61,Connect application to MongoDB server,Establish connection between Python application and MongoDB server.,5
+62,Create collections in MongoDB,Create and manage collections programmatically.,4
+63,Insert documents with multiple data types,"Insert documents containing arrays, objects, and numbers.",5
+64,Implement update operations,"Perform updates using $set, $push, and $inc.",6
+65,Implement delete operations,Delete documents using filters.,4
+66,Perform advanced find queries,Execute complex queries using logical and array operators.,6
+67,Create Indexes,"Create single-field, compound, and unique indexes.",3
+68,Perform aggregation operations,Use aggregation pipeline to calculate values like totalGrade.,7
+69,Insert documents manually using MongoDB Compass or mongosh,Insert documents manually using MongoDB tools.,3
+70,Create one-to-many relationships,Design relationships between collections manually.,4
+71,Perform lookup joins,Use $lookup to join collections.,6
+72,Group and aggregate data,Use $group to summarize data.,5
+73,Filter and project data,Apply $match and $project operations.,5
+74,Sort and limit query results,Sort and limit results.,4
+75,Data preprocessing,"Perform cleaning, missing value handling, encoding, and scaling for all ML tasks.",5
+76,Train classification models,Train two classification algorithms such as KNN and Logistic Regression on processed data.,6
+77,Evaluate classification models,"Evaluate classification models using confusion matrix, accuracy, precision, and recall.",5
+78,Predict classification outcomes,Predict class labels for new data using trained classification models.,4
+79,Visualize classification results,Plot and compare predicted vs actual classification results.,4
+80,Train clustering models,Train K-Means and DBSCAN clustering algorithms on dataset.,6
+81,Evaluate clustering models,Evaluate clustering models using silhouette score and Davies-Bouldin index.,5
+82,Assign clusters to new data,Predict cluster assignments for unseen data points.,4
+83,Visualize clustering results,Visualize clustering results using scatter plots.,4
+84,Run association rule mining algorithms,Apply Apriori and FP-Growth algorithms on transaction data.,6
+85,Compare association rule models,"Compare results using support, confidence, and lift metrics.",5
+86,Train regression models,Train regression models such as Linear Regression and Random Forest Regression.,6
+87,Evaluate regression models,"Evaluate regression models using R², MAE, and RMSE metrics.",5
+88,Predict regression outputs,Predict target values for new samples using regression models.,4
+89,Visualize regression results,Plot predicted vs actual values for regression models.,4
+90,Implement selected model from scratch,"Implement one selected algorithm manually including training, prediction, and evaluation without using high-level libraries.",8
+91,Create Java Mapper for error log extraction,"Implement Hadoop Mapper class in Java to filter log lines containing 'ERR' or 'Error', extract full error messages, and emit them with value 1.",4
+92,Create Java Reducer for aggregating error counts,Implement Hadoop Reducer class to sum occurrences of each error message and output total counts per unique error.,4
+93,Develop Java driver for MapReduce execution and JSON output,Create a Hadoop driver program that configures and runs the MapReduce job and converts output into JSON format mapping error messages to counts.,5
+94,Dataset preparation and splitting,"Collect dataset and split it into training, testing, and optionally validation sets based on the problem domain.",5
+95,Data preprocessing,"Handle missing values, remove duplicates, detect outliers, encode categorical variables, and scale numerical features.",6
+96,Neural network model design,"Design a neural network architecture by selecting number of layers, neurons, activation functions, optimizer, and loss function.",7
+97,Model training and monitoring,Train the neural network model and monitor training/validation loss and accuracy curves.,7
+98,Model evaluation,"Evaluate model performance using appropriate metrics such as accuracy, precision, recall, F1-score, MAE, RMSE, or R² depending on task type.",6
+99,Hyperparameter tuning,"Experiment with learning rates, batch sizes, optimizers (SGD, Adam, RMSProp), and network architecture variations.",6
+100,Prediction on unseen data,Use the trained model to make predictions on new unseen samples.,4
+101,Visualization and reporting,"Visualize training curves, confusion matrix, and prediction vs actual results. Prepare summary report of findings.",6
+102,Design PostgreSQL database schema,"Create tables and relationships for users, job posts, and applications, including primary/foreign keys and necessary constraints.",8
+103,Implement user registration,"Build frontend registration page and backend endpoint to create new employer or candidate accounts, storing credentials securely in the database.",6
+104,Implement user login,Create frontend login form and backend authentication service that validates credentials and issues a session or token.,5
+105,Implement user logout,Add frontend logout control and backend logic to invalidate the user session or token.,4
+106,Create job posting,Provide UI for employers to enter job details and a backend API to store the new job post in the database.,6
+107,Read/list job postings,Implement frontend view that fetches and displays available job listings and a backend endpoint that returns job data.,5
+108,Update job posting,Create UI for employers to edit their job posts and a backend service that updates the corresponding record.,6
+109,Delete job posting,Add frontend control for employers to remove a job post and backend logic to delete the record safely.,5
+110,Submit job application,Build candidate UI to apply for a job and backend endpoint that records the application in the database.,6
+111,Read/track candidate applications,Develop frontend page where candidates view the status of their applications and a backend service that returns the relevant data.,5
+112,Update application status,"Provide employer UI to change the status of received applications (e.g., accepted, rejected) and backend logic to persist the change.",6
+113,Delete/withdraw application,Implement candidate UI to withdraw an application and backend endpoint that removes or flags the application record.,5
+114,Implement Minimax algorithm,Develop the Minimax algorithm to evaluate all possible moves in Tic-Tac-Toe and choose optimal moves considering best and worst outcomes.,7
+115,Integrate Alpha-Beta Pruning,Enhance the Minimax algorithm by adding Alpha-Beta Pruning to eliminate unnecessary branches in the game tree and improve computation efficiency.,6
+116,Design heuristic evaluation functions,Create heuristic functions that assign values to board configurations to guide the AI's strategic decisions quickly.,6
+117,Implement user interface,"Develop a user-friendly GUI that displays the Tic-Tac-Toe board, allows players to make moves, and shows the AI's chosen moves clearly.",7
+118,Validate user moves,"Ensure that user inputs are valid (only empty cells can be selected, correct symbols used, etc.) and handle invalid moves gracefully.",4
+119,Implement game loop and win detection,"Handle alternating turns, check for wins, draws, or ongoing games after each move, and update the board state accordingly.",6
+120,Optimize performance,"Optimize the algorithms to ensure the AI responds quickly, using techniques such as symmetry reduction or caching repeated board evaluations.",5
+121,Test AI vs human and AI vs AI gameplay,"Ensure the AI behaves correctly against human players and in AI vs AI simulations, covering all edge cases.",5
+122,Display move analysis and hints,"Optionally, provide visual hints or move analysis for the player to understand the AI's decisions.",4
+123,Implement course upload feature,"Create an Angular UI that allows instructors to enter course information and upload course materials, and develop a Django REST API endpoint that validates the input, stores course metadata in PostgreSQL, and saves uploaded files.",6
+124,Implement student enrollment feature,Build an Angular interface for students to enroll in available courses and a Django API that creates enrollment records linking students to courses in the PostgreSQL database.,5
+125,Implement assignment submission feature,"Develop an Angular form for students to upload assignment files, and a Django API that receives the files, validates them, and stores submission details and file references in PostgreSQL.",7
+126,Implement progress tracking feature,"Create an Angular dashboard that displays a student's progress metrics, and a Django API that aggregates and returns progress data from PostgreSQL.",5
+127,Design PostgreSQL database schema,"Define and create relational tables for instructors, courses, students, enrollments, assignments, submissions, and progress tracking, including appropriate foreign keys and indexes.",4
+128,Acquire regression dataset,Obtain and load a suitable dataset for regression problem.,2
+129,Acquire classification dataset,Obtain and load a suitable dataset for classification problem.,2
+130,Preprocess regression data,"Perform preprocessing (cleaning, missing values handling, encoding, scaling) for regression dataset.",4
+131,Preprocess classification data,"Perform preprocessing (cleaning, missing values handling, encoding, scaling) for classification dataset.",4
+132,Train regression model,Train a regression model using ML algorithms.,5
+133,Train classification model,Train a classification model using ML algorithms.,5
+134,Test regression model,Evaluate regression model on test dataset.,4
+135,Test classification model,Evaluate classification model on test dataset.,4
+136,Predict regression outcomes,Predict outputs for unseen regression data.,4
+137,Predict classification outcomes,Predict labels for unseen classification data.,4
+138,Visualize regression results,Plot predicted vs actual regression results.,5
+139,Visualize classification results,Plot confusion matrix and classification results.,5
+140,Evaluate regression model,"Compute R², MAE, RMSE.",5
+141,Evaluate classification model,Compute confusion matrix and accuracy.,5
+142,Generate Test Case Report,Create a detailed test case report documenting scenarios and expected results.,3
+143,Generate Bug Report,Create bug reports with reproduction steps and severity.,4
+144,Develop Selenium Automation Scripts,Write Selenium scripts for browser automation.,7
+145,Implement TestNG Test Suite Configuration,Configure TestNG suite XML and execution flow.,5
+146,Integrate TestNG Assertions,Use assertions to validate test results.,4
+147,Create Page Object Model (POM) Structure,Implement POM design pattern.,6
+148,Implement Locator Strategies,Use different Selenium locators.,5
+149,Develop Data-Driven Tests,Use DataProvider or JSON for test data.,6
+150,Install two VMware ESXi hosts,Perform installation and initial setup of two ESXi hosts on physical or virtual machines.,7
+151,Deploy VMware vCenter Server,Install and configure vCenter Server appliance to manage ESXi hosts centrally.,7
+152,Configure network settings for ESXi and vCenter,"Set up virtual switches, port groups, IP addressing, and DNS configuration for connectivity.",5
+153,Add ESXi hosts to vCenter inventory,Register ESXi hosts in vCenter and verify successful connection.,4
+154,Create and organize datacenters in vCenter,Create datacenter structure and organize ESXi hosts into logical hierarchy.,4
+155,Centralize virtual machine management,"Configure resource pools, permissions, and VM organization in vCenter.",5
+156,Create virtual machines,"Provision VMs with CPU, memory, storage, and network configuration.",4
+157,Modify virtual machine configurations,"Update VM settings such as CPU, RAM, disks, and network adapters.",4
+158,Optimize virtual machine performance,Apply best practices for VM performance tuning and resource allocation.,5
+159,Perform live VM migration (vMotion),Migrate running VM between ESXi hosts without downtime using vMotion.,8
+160,Create VM snapshots,Create snapshots for point-in-time recovery of virtual machines.,4
+161,Implement VM backup strategy,Configure backup and recovery strategy for virtual machines.,6
+162,Deploy RESTful API on VM (Host 1),Install Python environment and deploy a REST API service on a VM in ESXi Host 1.,6
+163,Test REST API from VM on Host 2,Send HTTP requests using curl or PowerShell to test API functionality from another host.,4
+164,Validate network connectivity,Check connectivity between ESXi hosts and VMs using ping and network diagnostics.,3
+165,Document installation and configuration,Write markdown documentation for ESXi and vCenter installation steps.,3
+166,Document vCenter integration,"Document host addition, datacenter setup, and centralized management steps.",3
+167,Document VM management processes,"Document VM lifecycle operations such as creation, modification, and optimization.",3
+168,Document migration and backup procedures,"Document vMotion, snapshots, and backup strategy implementation.",3
+169,Document API testing and results,"Document REST API deployment, test cases, and response results.",3
+170,Ingestion & Loading using NiFi,"Design and implement a NiFi flow that ingests raw data from streaming logs, CDC events, and files, then loads it into the raw layer of the data warehouse.",7
+171,Orchestrate dbt execution via NiFi REST API,Use NiFi REST API with an orchestrator (Airflow or scheduler) to trigger dbt jobs based on defined dependencies and schedules.,6
+172,dbt Transformation & Modeling,"Build dbt SQL models to clean, transform, aggregate, join, and test raw data into structured analytical tables.",8
+173,Data Distribution using NiFi to PowerBI,Use NiFi to extract processed data from the warehouse and push it to PowerBI for automated dashboard updates.,6
+174,PowerBI Push Dataset Integration (Bonus),Implement PowerBI online push dataset feature triggered via NiFi InvokeHTTP processor for real-time dashboard updates.,4
+175,Implement Library System ontology using Protégé,,6
+176,Define at least seven OWL classes,,4
+177,Define OWL object properties,,4
+178,Define OWL data properties,,4
+179,Create OWL individuals,,3
+180,Apply cardinality restrictions and logical conditions,,6
+181,Run DL query using reasoner,,5
+182,SPARQL query for books by authors,,5
+183,SPARQL query for overdue borrowings,,5
+184,Declare property characteristics,,5
+185,Generate ontology visualization diagram,,4
+186,Design data warehouse dimensional schema,"Create a dimensional model for the retail data warehouse, defining fact tables, dimension tables, keys, and relationships.",6
+187,Integrate multiple data sources (ETL extraction),"Develop SSIS packages to connect to all source systems (ERP, POS, CRM) and extract raw data into staging areas.",5
+188,Clean and transform data using SSIS,"Implement data cleansing, validation, and transformation logic within SSIS to prepare data for loading into the warehouse.",6
+189,Load data into data warehouse,"Load transformed data into fact and dimension tables, handling incremental loads and surrogate keys.",5
+190,Create OLAP cube with SSAS,"Design and build an OLAP cube using SSAS including measures, dimensions, hierarchies, and processing rules.",7
+191,Develop SSRS reports,"Create interactive and static reports using SSRS with datasets, parameters, and visual layouts for business reporting.",6
+192,Build Power BI dashboards,"Develop interactive dashboards in Power BI with slicers, drill-through, and visual analytics connected to SSAS/warehouse data.",5
